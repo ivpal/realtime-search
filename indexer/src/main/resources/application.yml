@@ -1,2 +1,6 @@
 kafka:
   servers: ${KAFKA_SERVERS}
+spring:
+  elasticsearch:
+    rest:
+      uris: ${ELASTICSEARCH_SERVERS}

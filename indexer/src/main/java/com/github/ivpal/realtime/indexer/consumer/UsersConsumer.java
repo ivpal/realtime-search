@@ -1,6 +1,7 @@
 package com.github.ivpal.realtime.indexer.consumer;
 
-import com.github.ivpal.realtime.indexer.value.User;
+import com.github.ivpal.realtime.indexer.service.UserService;
+import com.github.ivpal.realtime.indexer.value.ValueUser;
 import com.github.ivpal.realtime.indexer.value.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,25 @@ import org.springframework.stereotype.Component;
 public class UsersConsumer {
     private final Logger logger = LoggerFactory.getLogger(UsersConsumer.class);
 
-    @KafkaListener(topics = "core.public.users", containerFactory = "usersKafkaListenerContainerFactory")
-    public void consumeUsersChanges(Value<User> value) {
-        logger.info(value.getPayload().getAfter().toString());
+    private final UserService userService;
+
+    public UsersConsumer(UserService userService) {
+        this.userService = userService;
+    }
+
+    @KafkaListener(
+            topics = "core.public.users",
+            containerFactory = "usersKafkaListenerContainerFactory",
+            errorHandler = "kafkaErrorHandler"
+    )
+    public void consumeUsersChanges(Value<ValueUser> value) {
+        logger.info("Consume event: " + value);
+        if (value == null) return;
+
+        var payload = value.getPayload();
+        switch (payload.getOp()) {
+            case "c" -> userService.addToIndex(payload.getAfter());
+            case "d" -> userService.remove(payload.getBefore().getId());
+        }
     }
 }

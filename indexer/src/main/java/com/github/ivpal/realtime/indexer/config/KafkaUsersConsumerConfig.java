@@ -2,7 +2,7 @@ package com.github.ivpal.realtime.indexer.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.ivpal.realtime.indexer.key.Key;
-import com.github.ivpal.realtime.indexer.value.User;
+import com.github.ivpal.realtime.indexer.value.ValueUser;
 import com.github.ivpal.realtime.indexer.value.Value;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class KafkaUsersConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<Key, Value<User>> usersConsumerFactory() {
+    public ConsumerFactory<Key, Value<ValueUser>> usersConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServers());
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "users-changes-consumer-group");
@@ -39,8 +39,8 @@ public class KafkaUsersConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<Key, Value<User>> usersKafkaListenerContainerFactory() {
-        var factory = new ConcurrentKafkaListenerContainerFactory<Key, Value<User>>();
+    public ConcurrentKafkaListenerContainerFactory<Key, Value<ValueUser>> usersKafkaListenerContainerFactory() {
+        var factory = new ConcurrentKafkaListenerContainerFactory<Key, Value<ValueUser>>();
         factory.setConsumerFactory(usersConsumerFactory());
         return factory;
     }
