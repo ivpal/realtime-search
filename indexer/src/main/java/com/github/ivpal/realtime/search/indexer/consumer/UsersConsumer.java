@@ -29,8 +29,9 @@ public class UsersConsumer {
 
         var payload = value.getPayload();
         switch (payload.getOp()) {
-            case "c" -> userService.addToIndex(payload.getAfter());
+            case "c" -> userService.create(payload.getAfter());
             case "d" -> userService.remove(payload.getBefore().getId());
+            case "u" -> userService.update(payload.getAfter().getId(), payload.getAfter());
         }
     }
 }

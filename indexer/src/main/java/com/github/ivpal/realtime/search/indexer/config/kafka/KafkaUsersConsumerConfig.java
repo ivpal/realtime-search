@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.config;
+package com.github.ivpal.realtime.search.indexer.config.kafka;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.ivpal.realtime.search.indexer.value.Value;

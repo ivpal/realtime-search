@@ -1,7 +1,6 @@
-package com.github.ivpal.realtime.search.indexer.config;
+package com.github.ivpal.realtime.search.indexer.config.elasticsearch;
 
 import org.elasticsearch.client.RestHighLevelClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
@@ -10,14 +9,17 @@ import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfig
 
 @Configuration
 public class ElasticRestClientConfig extends AbstractElasticsearchConfiguration {
-    @Value("spring.elasticsearch.rest.uris")
-    private String elasticUri;
+    private final ElasticsearchConfigurationProperties properties;
+
+    public ElasticRestClientConfig(ElasticsearchConfigurationProperties properties) {
+        this.properties = properties;
+    }
 
     @Bean
     @Override
     public RestHighLevelClient elasticsearchClient() {
         var clientConfiguration = ClientConfiguration.builder()
-                .connectedTo(elasticUri)
+                .connectedTo(properties.getServers())
                 .build();
 
         return RestClients.create(clientConfiguration).rest();

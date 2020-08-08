@@ -5,6 +5,8 @@ import com.github.ivpal.realtime.search.indexer.repository.UserRepository;
 import com.github.ivpal.realtime.search.indexer.value.ValueUser;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -13,14 +15,26 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void addToIndex(ValueUser valueUser) {
+    public User create(ValueUser valueUser) {
         var user = new User();
         user.setId(valueUser.getId());
-        user.setName(valueUser.getFirstName() + " " + valueUser.getLastName());
-        userRepository.save(user);
+        user.setName(getNameFromValueUser(valueUser));
+        return userRepository.save(user);
     }
 
     public void remove(long id) {
         userRepository.deleteById(id);
+    }
+
+    public Optional<User> update(long id, ValueUser valueUser) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    user.setName(getNameFromValueUser(valueUser));
+                    return userRepository.save(user);
+                });
+    }
+
+    private static String getNameFromValueUser(ValueUser valueUser) {
+        return valueUser.getFirstName() + " " + valueUser.getLastName();
     }
 }
