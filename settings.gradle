@@ -1,4 +1,4 @@
-rootProject.name = 'realtime-indexer'
+rootProject.name = 'realtime-search'
 include 'core'
 include 'indexer'
 
