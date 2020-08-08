@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.core;
+package com.github.ivpal.realtime.search.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

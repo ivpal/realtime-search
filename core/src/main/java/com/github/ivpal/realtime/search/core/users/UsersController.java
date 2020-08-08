@@ -1,7 +1,7 @@
-package com.github.ivpal.realtime.search.indexer.core.users;
+package com.github.ivpal.realtime.search.core.users;
 
-import com.github.ivpal.realtime.search.indexer.core.users.dto.UserCreateRequest;
-import com.github.ivpal.realtime.search.indexer.core.users.dto.UserResponse;
+import com.github.ivpal.realtime.search.core.users.dto.UserCreateRequest;
+import com.github.ivpal.realtime.search.core.users.dto.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

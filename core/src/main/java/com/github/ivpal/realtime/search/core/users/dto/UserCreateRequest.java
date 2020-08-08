@@ -1,24 +1,17 @@
-package com.github.ivpal.realtime.search.indexer.core.users.dto;
+package com.github.ivpal.realtime.search.core.users.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserResponse {
-    private final Long id;
-
+public class UserCreateRequest {
     @JsonProperty("first_name")
     private final String firstName;
 
     @JsonProperty("last_name")
     private final String lastName;
 
-    public UserResponse(Long id, String firstName, String lastName) {
-        this.id = id;
+    public UserCreateRequest(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getFirstName() {

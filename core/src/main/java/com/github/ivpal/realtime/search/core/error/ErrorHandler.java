@@ -1,6 +1,6 @@
-package com.github.ivpal.realtime.search.indexer.core.error;
+package com.github.ivpal.realtime.search.core.error;
 
-import com.github.ivpal.realtime.search.indexer.core.users.UserNotFoundException;
+import com.github.ivpal.realtime.search.core.users.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.core.users;
+package com.github.ivpal.realtime.search.core.users;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

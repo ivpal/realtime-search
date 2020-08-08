@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.core.users;
+package com.github.ivpal.realtime.search.core.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

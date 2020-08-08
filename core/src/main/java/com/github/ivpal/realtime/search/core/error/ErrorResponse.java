@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.core.error;
+package com.github.ivpal.realtime.search.core.error;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
