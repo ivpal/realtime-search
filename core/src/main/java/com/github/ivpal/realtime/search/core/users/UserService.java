@@ -24,4 +24,12 @@ public class UserService {
         user = userRepository.save(user);
         return new UserResponse(user.getId(), user.getFirstName(), user.getLastName());
     }
+
+    public Optional<User> remove(long id) {
+        return userRepository.findById(id)
+                .flatMap(user -> {
+                    userRepository.deleteById(user.getId());
+                    return Optional.of(user);
+                });
+    }
 }
