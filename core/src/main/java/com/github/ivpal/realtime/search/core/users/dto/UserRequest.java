@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
 
-public class UserCreateRequest {
+public class UserRequest {
     @NotBlank
     @JsonProperty("first_name")
     private final String firstName;
@@ -13,7 +13,7 @@ public class UserCreateRequest {
     @JsonProperty("last_name")
     private final String lastName;
 
-    public UserCreateRequest(String firstName, String lastName) {
+    public UserRequest(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

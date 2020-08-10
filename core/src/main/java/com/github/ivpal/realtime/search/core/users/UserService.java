@@ -1,6 +1,6 @@
 package com.github.ivpal.realtime.search.core.users;
 
-import com.github.ivpal.realtime.search.core.users.dto.UserCreateRequest;
+import com.github.ivpal.realtime.search.core.users.dto.UserRequest;
 import com.github.ivpal.realtime.search.core.users.dto.UserResponse;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +19,19 @@ public class UserService {
                 .map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
     }
 
-    public UserResponse create(UserCreateRequest request) {
+    public UserResponse create(UserRequest request) {
         var user = new User(request.getFirstName(), request.getLastName());
         user = userRepository.save(user);
         return new UserResponse(user.getId(), user.getFirstName(), user.getLastName());
+    }
+
+    public Optional<UserResponse> update(long id, UserRequest request) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    user.setFirstName(request.getFirstName());
+                    user.setLastName(request.getLastName());
+                    return userRepository.save(user);
+                }).map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
     }
 
     public Optional<User> remove(long id) {
