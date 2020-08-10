@@ -2,10 +2,14 @@ package com.github.ivpal.realtime.search.core.users.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
+
 public class UserCreateRequest {
+    @NotBlank
     @JsonProperty("first_name")
     private final String firstName;
 
+    @NotBlank
     @JsonProperty("last_name")
     private final String lastName;
 

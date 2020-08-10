@@ -3,6 +3,7 @@ package com.github.ivpal.realtime.search.core.users;
 import com.github.ivpal.realtime.search.core.users.dto.UserCreateRequest;
 import com.github.ivpal.realtime.search.core.users.dto.UserResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +25,12 @@ public class UsersController {
     @GetMapping("/{id}")
     public UserResponse get(@PathVariable long id) {
         return userService.getById(id)
-                .orElseThrow(() -> new UserNotFoundException(String.format("User with id=%d not found.", id)));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse create(@RequestBody UserCreateRequest request) {
+    public UserResponse create(@RequestBody @Validated UserCreateRequest request) {
         return userService.create(request);
     }
 
@@ -37,6 +38,6 @@ public class UsersController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable long id) {
         userService.remove(id)
-                .orElseThrow(() -> new UserNotFoundException(String.format("User with id=%d not found.", id)));
+                .orElseThrow(() -> new UserNotFoundException(id));
     }
 }

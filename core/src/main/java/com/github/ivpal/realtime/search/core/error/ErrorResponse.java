@@ -1,35 +1,67 @@
 package com.github.ivpal.realtime.search.core.error;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ErrorResponse {
-    @JsonProperty("error_code")
-    private int errorCode;
+    private int status;
+    private String message;
+    private List<Error> errors = new ArrayList<>();
 
-    @JsonProperty("error_message")
-    private String errorMessage;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime timestamp = LocalDateTime.now();
 
     public ErrorResponse() {
     }
 
-    public ErrorResponse(int errorCode, String errorMessage) {
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
+    public int getStatus() {
+        return status;
     }
 
-    public int getErrorCode() {
-        return errorCode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
+    public String getMessage() {
+        return message;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public List<Error> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(List<Error> errors) {
+        this.errors = errors;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    static class Error {
+        private String message;
+
+        public Error(String message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 }
