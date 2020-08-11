@@ -1,4 +1,5 @@
 rootProject.name = 'realtime-search'
 include 'core'
 include 'indexer'
+include 'search'
 
