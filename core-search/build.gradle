@@ -10,12 +10,13 @@ sourceCompatibility = '14'
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo1.maven.org/maven2/' }
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    
-    compile project(':core-search')
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

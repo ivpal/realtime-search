@@ -1,6 +1,6 @@
 package com.github.ivpal.realtime.search.indexer.service;
 
-import com.github.ivpal.realtime.search.indexer.domain.User;
+import com.github.ivpal.realtime.search.core.entity.User;
 import com.github.ivpal.realtime.search.indexer.repository.UserRepository;
 import com.github.ivpal.realtime.search.indexer.value.ValueUser;
 import org.springframework.stereotype.Service;

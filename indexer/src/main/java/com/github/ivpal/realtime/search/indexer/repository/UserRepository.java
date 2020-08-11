@@ -1,6 +1,6 @@
 package com.github.ivpal.realtime.search.indexer.repository;
 
-import com.github.ivpal.realtime.search.indexer.domain.User;
+import com.github.ivpal.realtime.search.core.entity.User;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 

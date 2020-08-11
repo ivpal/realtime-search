@@ -2,4 +2,4 @@ rootProject.name = 'realtime-search'
 include 'indexer'
 include 'search'
 include 'users'
-
+include 'core-search'

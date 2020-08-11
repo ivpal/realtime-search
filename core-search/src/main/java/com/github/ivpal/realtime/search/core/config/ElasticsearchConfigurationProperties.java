@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.config.elasticsearch;
+package com.github.ivpal.realtime.search.core.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

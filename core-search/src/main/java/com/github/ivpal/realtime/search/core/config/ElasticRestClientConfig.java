@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.config.elasticsearch;
+package com.github.ivpal.realtime.search.core.config;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;

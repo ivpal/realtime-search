@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.indexer.domain;
+package com.github.ivpal.realtime.search.core.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
