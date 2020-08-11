@@ -1,6 +1,5 @@
-package com.github.ivpal.realtime.search.core.error;
+package com.github.ivpal.realtime.search.users.error;
 
-import com.github.ivpal.realtime.search.core.users.UserNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

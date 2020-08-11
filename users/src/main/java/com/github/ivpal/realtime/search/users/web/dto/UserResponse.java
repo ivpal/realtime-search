@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.core.users.dto;
+package com.github.ivpal.realtime.search.users.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

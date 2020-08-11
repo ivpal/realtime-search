@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.core.users;
+package com.github.ivpal.realtime.search.users.error;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(long id) {

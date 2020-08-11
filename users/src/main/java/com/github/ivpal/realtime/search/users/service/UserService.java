@@ -1,7 +1,9 @@
-package com.github.ivpal.realtime.search.core.users;
+package com.github.ivpal.realtime.search.users.service;
 
-import com.github.ivpal.realtime.search.core.users.dto.UserRequest;
-import com.github.ivpal.realtime.search.core.users.dto.UserResponse;
+import com.github.ivpal.realtime.search.users.entity.User;
+import com.github.ivpal.realtime.search.users.repository.UserRepository;
+import com.github.ivpal.realtime.search.users.web.dto.UserRequest;
+import com.github.ivpal.realtime.search.users.web.dto.UserResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

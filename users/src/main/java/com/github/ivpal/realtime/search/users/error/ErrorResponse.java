@@ -1,4 +1,4 @@
-package com.github.ivpal.realtime.search.core.error;
+package com.github.ivpal.realtime.search.users.error;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

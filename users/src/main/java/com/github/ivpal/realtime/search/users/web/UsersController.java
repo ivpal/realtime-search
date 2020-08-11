@@ -1,7 +1,9 @@
-package com.github.ivpal.realtime.search.core.users;
+package com.github.ivpal.realtime.search.users.web;
 
-import com.github.ivpal.realtime.search.core.users.dto.UserRequest;
-import com.github.ivpal.realtime.search.core.users.dto.UserResponse;
+import com.github.ivpal.realtime.search.users.service.UserService;
+import com.github.ivpal.realtime.search.users.error.UserNotFoundException;
+import com.github.ivpal.realtime.search.users.web.dto.UserRequest;
+import com.github.ivpal.realtime.search.users.web.dto.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
