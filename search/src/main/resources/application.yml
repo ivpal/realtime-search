@@ -1,0 +1,2 @@
+users:
+  base-url: ${USERS_BASE_URL}
