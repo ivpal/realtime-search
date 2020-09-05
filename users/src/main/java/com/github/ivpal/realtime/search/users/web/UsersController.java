@@ -4,6 +4,7 @@ import com.github.ivpal.realtime.search.users.service.UserService;
 import com.github.ivpal.realtime.search.users.error.UserNotFoundException;
 import com.github.ivpal.realtime.search.users.web.dto.UserRequest;
 import com.github.ivpal.realtime.search.users.web.dto.UserResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,12 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 public class UsersController {
     private final UserService userService;
-
-    public UsersController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/{id}")
     public UserResponse get(@PathVariable long id) {

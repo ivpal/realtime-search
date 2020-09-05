@@ -2,18 +2,16 @@ package com.github.ivpal.realtime.search.indexer.service;
 
 import com.github.ivpal.realtime.search.core.entity.User;
 import com.github.ivpal.realtime.search.indexer.repository.UserRepository;
-import com.github.ivpal.realtime.search.indexer.value.ValueUser;
+import com.github.ivpal.realtime.search.indexer.dto.value.ValueUser;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public User create(ValueUser valueUser) {
         var user = new User();

@@ -1,31 +1,15 @@
 package com.github.ivpal.realtime.search.users.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Value;
 
+@Value
 public class UserResponse {
-    private final Long id;
+    Long id;
 
     @JsonProperty("first_name")
-    private final String firstName;
+    String firstName;
 
     @JsonProperty("last_name")
-    private final String lastName;
-
-    public UserResponse(Long id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
+    String lastName;
 }

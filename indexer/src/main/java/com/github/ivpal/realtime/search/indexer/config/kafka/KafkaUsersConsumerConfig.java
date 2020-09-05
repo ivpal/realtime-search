@@ -1,9 +1,10 @@
 package com.github.ivpal.realtime.search.indexer.config.kafka;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.github.ivpal.realtime.search.indexer.value.Value;
-import com.github.ivpal.realtime.search.indexer.value.ValueUser;
-import com.github.ivpal.realtime.search.indexer.key.Key;
+import com.github.ivpal.realtime.search.indexer.dto.value.Value;
+import com.github.ivpal.realtime.search.indexer.dto.value.ValueUser;
+import com.github.ivpal.realtime.search.indexer.dto.key.Key;
+import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +19,9 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
+@RequiredArgsConstructor
 public class KafkaUsersConsumerConfig {
     private final KafkaConfigurationProperties kafkaProperties;
-
-    public KafkaUsersConsumerConfig(KafkaConfigurationProperties kafkaProperties) {
-        this.kafkaProperties = kafkaProperties;
-    }
 
     @Bean
     public ConsumerFactory<Key, Value<ValueUser>> usersConsumerFactory() {

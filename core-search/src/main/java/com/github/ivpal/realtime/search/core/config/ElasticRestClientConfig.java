@@ -1,5 +1,6 @@
 package com.github.ivpal.realtime.search.core.config;
 
+import lombok.RequiredArgsConstructor;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +9,9 @@ import org.springframework.data.elasticsearch.client.RestClients;
 import org.springframework.data.elasticsearch.config.AbstractElasticsearchConfiguration;
 
 @Configuration
+@RequiredArgsConstructor
 public class ElasticRestClientConfig extends AbstractElasticsearchConfiguration {
     private final ElasticsearchConfigurationProperties properties;
-
-    public ElasticRestClientConfig(ElasticsearchConfigurationProperties properties) {
-        this.properties = properties;
-    }
 
     @Bean
     @Override
