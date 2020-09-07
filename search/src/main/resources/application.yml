@@ -1,2 +1,6 @@
+server:
+  port: 8081
 users:
   base-url: ${USERS_BASE_URL}
+elasticsearch:
+  servers: ${ELASTICSEARCH_SERVERS}
