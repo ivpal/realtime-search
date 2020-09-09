@@ -56,4 +56,4 @@ services:
       - 8081:8081
     environment:
       - ELASTICSEARCH_SERVERS=elastic:9200
-      - USERS_BASE_URL=users:8080
+      - USERS_BASE_URL=users:8080/api
