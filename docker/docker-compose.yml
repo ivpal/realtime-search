@@ -1,7 +1,8 @@
 version: '3'
 services:
   postgres:
-    image: debezium/postgres:12-alpine
+    build:
+      context: ./postgres
     ports:
       - 5432:5432
     environment:
