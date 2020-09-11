@@ -18,15 +18,23 @@ services:
     image: debezium/kafka:1.2
     ports:
       - 9092:9092
+    environment:
+      - ZOOKEEPER_CONNECT=zookeeper:2181
+    links:
+      - zookeeper
   connect:
     image: debezium/connect:1.2
     ports:
       - 8083:8083
     environment:
+      - BOOTSTRAP_SERVERS=kafka:9092
       - GROUP_ID=1
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
       - STATUS_STORAGE_TOPIC=my_connect_statuses
+    links:
+      - postgres
+      - kafka
   elastic:
     image: elasticsearch:7.8.1
     ports:
@@ -43,6 +51,8 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_NAME=postgres
+    links:
+      - postgres
   indexer:
     image: realtime-search/indexer:0.1.0
     ports:
@@ -50,6 +60,8 @@ services:
     environment:
       - KAFKA_SERVERS=kafka:9092
       - ELASTICSEARCH_SERVERS=elastic:9200
+    links:
+      - kafka
   search:
     image: realtime-search/search:0.1.0
     ports:
@@ -57,3 +69,6 @@ services:
     environment:
       - ELASTICSEARCH_SERVERS=elastic:9200
       - USERS_BASE_URL=users:8080/api
+    links:
+      - elastic
+      - users
