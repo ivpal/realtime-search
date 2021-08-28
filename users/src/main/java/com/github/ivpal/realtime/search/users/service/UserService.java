@@ -16,7 +16,7 @@ public class UserService {
 
     public Optional<UserResponse> getById(long id) {
         return userRepository.findById(id)
-                .map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
+            .map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
     }
 
     public UserResponse create(UserRequest request) {
@@ -29,18 +29,18 @@ public class UserService {
 
     public Optional<UserResponse> update(long id, UserRequest request) {
         return userRepository.findById(id)
-                .map(user -> {
-                    user.setFirstName(request.getFirstName());
-                    user.setLastName(request.getLastName());
-                    return userRepository.save(user);
-                }).map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
+            .map(user -> {
+                user.setFirstName(request.getFirstName());
+                user.setLastName(request.getLastName());
+                return userRepository.save(user);
+            }).map(user -> new UserResponse(user.getId(), user.getFirstName(), user.getLastName()));
     }
 
     public Optional<User> remove(long id) {
         return userRepository.findById(id)
-                .flatMap(user -> {
-                    userRepository.deleteById(user.getId());
-                    return Optional.of(user);
-                });
+            .flatMap(user -> {
+                userRepository.deleteById(user.getId());
+                return Optional.of(user);
+            });
     }
 }

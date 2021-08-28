@@ -1,11 +1,11 @@
 package com.github.ivpal.realtime.search.repository;
 
-import com.github.ivpal.realtime.search.core.entity.User;
+import com.github.ivpal.realtime.search.entity.User;
 import org.springframework.data.elasticsearch.repository.ReactiveElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 @Repository
 public interface UserRepository extends ReactiveElasticsearchRepository<User, Long> {
-    Flux<User> findByName(String name);
+    Flux<User> findByFirstNameOrLastName(String firstName, String lastName);
 }

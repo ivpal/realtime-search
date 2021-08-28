@@ -16,7 +16,7 @@ public class Router {
     @Bean
     RouterFunction<ServerResponse> routes() {
         return route()
-                .GET("/search", searchHandler::searchUser)
-                .build();
+            .GET("/search", searchHandler::searchUser)
+            .build();
     }
 }

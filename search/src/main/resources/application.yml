@@ -1,6 +1,23 @@
 server:
   port: 8081
-users:
-  base-url: ${USERS_BASE_URL}
-elasticsearch:
-  servers: ${ELASTICSEARCH_SERVERS}
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS}
+  data:
+    elasticsearch:
+      client:
+        reactive:
+          endpoints: ${ELASTICSEARCH_SERVERS}
+  elasticsearch:
+    rest:
+      uris: ${ELASTICSEARCH_SERVERS}
+  cloud:
+    stream:
+      binders:
+        users-changes-binder:
+          type: kafka
+      bindings:
+        usersChangesConsumer-in-0:
+          binder: users-changes-binder
+          destination: core.public.users

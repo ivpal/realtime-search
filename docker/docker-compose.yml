@@ -9,13 +9,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   zookeeper:
-    image: debezium/zookeeper:1.2
+    image: debezium/zookeeper:1.5
     ports:
       - 2181:2181
       - 2888:2888
       - 3888:3888
   kafka:
-    image: debezium/kafka:1.2
+    image: debezium/kafka:1.5
     ports:
       - 9092:9092
     environment:
@@ -23,7 +23,7 @@ services:
     links:
       - zookeeper
   connect:
-    image: debezium/connect:1.2
+    image: debezium/connect:1.5
     ports:
       - 8083:8083
     environment:
@@ -36,11 +36,14 @@ services:
       - postgres
       - kafka
   elastic:
-    image: elasticsearch:7.8.1
+    image: elasticsearch:7.14.0
     ports:
-      - 9200:9200
+      - 9300:9200
     environment:
       - discovery.type=single-node
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - xpack.security.enabled=false
   users:
     image: realtime-search/users:0.1.0
     ports:
@@ -53,22 +56,13 @@ services:
       - DB_NAME=postgres
     links:
       - postgres
-  indexer:
-    image: realtime-search/indexer:0.1.0
-    ports:
-      - 8082:8082
-    environment:
-      - KAFKA_SERVERS=kafka:9092
-      - ELASTICSEARCH_SERVERS=elastic:9200
-    links:
-      - kafka
   search:
     image: realtime-search/search:0.1.0
     ports:
       - 8081:8081
     environment:
-      - ELASTICSEARCH_SERVERS=elastic:9200
-      - USERS_BASE_URL=users:8080/api
+      - ELASTICSEARCH_SERVERS=elastic:9300
+      - KAFKA_SERVERS=kafka:9092
     links:
+      - kafka
       - elastic
-      - users

@@ -1,8 +1,7 @@
 package com.github.ivpal.realtime.search.web;
 
-import com.github.ivpal.realtime.search.client.UsersClient;
-import com.github.ivpal.realtime.search.client.dto.User;
-import com.github.ivpal.realtime.search.service.UserIndexService;
+import com.github.ivpal.realtime.search.entity.User;
+import com.github.ivpal.realtime.search.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -14,8 +13,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @Component
 @RequiredArgsConstructor
 public class SearchHandler {
-    private final UserIndexService userIndexService;
-    private final UsersClient usersClient;
+    private final UserService userService;
 
     public Mono<ServerResponse> searchUser(ServerRequest request) {
         var queryOpt = request.queryParam("q");
@@ -24,9 +22,7 @@ public class SearchHandler {
         }
 
         var query = queryOpt.get();
-        var usersFlux = userIndexService.findByName(query)
-                .flatMap(user -> usersClient.getUser(user.getId()));
-
+        var usersFlux = userService.findByQuery(query);
         return ok().body(usersFlux, User.class);
     }
 }

@@ -1,8 +1,0 @@
-server:
-  port: 8082
-
-kafka:
-  servers: ${KAFKA_SERVERS}
-
-elasticsearch:
-  servers: ${ELASTICSEARCH_SERVERS}

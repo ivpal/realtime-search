@@ -26,7 +26,7 @@ public class UsersController {
     @GetMapping("/{id}")
     public UserResponse get(@PathVariable long id) {
         return userService.getById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
+            .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @PostMapping
@@ -38,13 +38,13 @@ public class UsersController {
     @PutMapping("/{id}")
     public UserResponse create(@PathVariable long id, @RequestBody @Validated UserRequest request) {
         return userService.update(id, request)
-                .orElseThrow(() -> new UserNotFoundException(id));
+            .orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remove(@PathVariable long id) {
         userService.remove(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
+            .orElseThrow(() -> new UserNotFoundException(id));
     }
 }
